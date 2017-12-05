@@ -18,10 +18,10 @@
     },
     getMetrics(el) {
       return {
-        scrollHeight: el.scrollHeight,
-        scrollTop: el.scrollTop,
-        clientWidth: el.clientWidth,
-        clientHeight: el.clientHeight
+        scrollHeight: document.documentElement.scrollHeight || document.body.scrollHeight,
+        scrollTop: window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop,
+        clientWidth: document.documentElement.clientWidth,
+        clientHeight: document.documentElement.clientHeight
       };
     },
     onCallback(type) {
@@ -46,7 +46,11 @@
     init(option) {
       _.$option = utils.extend(_.$option, option);
       _.create(arguments);
-      document.addEventListener('scroll', _.onScroll);
+      if (document.addEventListener) {
+        document.addEventListener('scroll', _.onScroll);
+      } else {
+        document.attachEvent('onscroll', _.onScroll);
+      }
     },
     // 创建dom
     create() {
@@ -61,7 +65,7 @@
     },
     // 页面滚动的回调函数
     onScroll() {
-      let metrics = utils.getMetrics(document.documentElement || document.body);
+      let metrics = utils.getMetrics();
       let curPos = metrics.scrollHeight <= metrics.scrollTop + metrics.clientHeight
         ? metrics.clientWidth 
         : Math.floor(metrics.clientWidth * (metrics.scrollTop / (metrics.scrollHeight - metrics.clientHeight)));
@@ -108,7 +112,11 @@
   }
 
   prop.destoryed = function () {
-    document.removeEventListener('scroll', _.onScroll);
+    if (document.removeEventListener) {
+      document.removeEventListener('scroll', _.onScroll);
+    } else {
+      document.detachEvent('onscroll', _.onScroll);
+    }
     document.body.removeChild(_.$el);
   }
 
