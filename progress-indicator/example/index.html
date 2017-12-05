@@ -7,7 +7,7 @@
   <title>Document</title>
   <style>
     html, body {
-      height: 2000px;
+      height: 3000px;
       margin: 0;
       padding: 0;
     }
@@ -20,6 +20,7 @@
 <script>
   let a = new progressIndicator();
   a.on('end', () => alert('end'));
+  a.on('end', () => console.log('end'));
   console.log(a.__proto__);
 </script>
 </html>
