@@ -4,6 +4,14 @@
     this.bindListener();
   }
 
+  function bindListener(dom = document, event, cb) {
+    if (dom.addEventListener) {
+      dom.addEventListener(event, cb);
+    } else if (dom.attachEvent) {
+      dom.attachEvent(`on${event}`, cb);
+    }
+  }
+
 
   searchComponent.prototype.init = function() {
     this.input = document.getElementById('search_input');
@@ -14,7 +22,7 @@
   }
 
   searchComponent.prototype.bindListener = function() {
-    this.input.addEventListener('input', (e) => {
+    bindListener(this.input, 'input',  (e) => {
       if (this.timeId) {
         clearTimeout(this.timeId);
       }
@@ -27,17 +35,11 @@
       }, 100);
     });
 
-    this.button.addEventListener('click', () => {
-      this.search();
-    });
+    bindListener(this.button, 'click', () => this.search());
 
-    document.addEventListener('keyup', (e) => {
-      if (e.keyCode === 13) {
-        this.search();
-      }
-    });
+    bindListener(document, 'keyup', e => e.keyCode === 13 && this.search());
 
-    this.list.addEventListener('click', (e) => {
+    bindListener(this.list, 'click', (e) => {
       let tagName = e.target.tagName;
       if (tagName === 'LI') {
         let text = e.target.innerText
