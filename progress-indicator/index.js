@@ -105,7 +105,6 @@
     fn.once = true;
     prop.on(type, fn);
   }
-
   prop.unsubscribe = function (type, fn) {
     let cbs = listener[type];
     listener[type] = cbs.filter(cb => cb !== fn);

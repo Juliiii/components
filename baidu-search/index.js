@@ -9,6 +9,8 @@
       dom.addEventListener(event, cb);
     } else if (dom.attachEvent) {
       dom.attachEvent(`on${event}`, cb);
+    } else {
+      dom[`on${event}`] = cb;
     }
   }
 

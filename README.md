@@ -15,3 +15,7 @@
 + **baidu-search**<br/>
 简介：百度搜索框<br/>
 在线预览: [传送门](https://juliiii.github.io/baidu-search/index.html)
+
++ **pagination**<br/>
+简介：分页组件<br/>
+在线预览: [传送门](https://juliiii.github.io/pagination/example/index.html)
