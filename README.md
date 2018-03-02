@@ -7,5 +7,11 @@
 + 不会是react或vue的组件库
 + 只希望我能尽量写，orz
 
-### 目标
-......
+### 目前完成
++ progress-indicator
+类似阮一峰老师的《ECMAScript 6 入门》的那个网站的顶部的进度条
+在线预览: [传送门](https://juliiii.github.io/progress-indicator/example/index.html)
+
++ baidu-search
+百度搜索框
+在线预览: [传送门](https://juliiii.github.io/baidu-search/index.html)
