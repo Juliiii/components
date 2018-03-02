@@ -101,25 +101,13 @@
           this.$option.current = length;
         }
 
-        if (!simple) {
-          if(this.length <= 6) {
-            for (let i = 1; i <= this.length; i++) {
-              this.items.push(i);
-            }
-          } else {
-            for (let i = 1; i <= 6; i++) {
-              if (i === 5) {
-                this.items.push('...');
-              } else if (i === 6) {
-                this.items.push(this.length);
-              } else {
-                this.items.push(i);
-              }
-            }
-          }
-        }
+        this.changeData();
       },
 
+      /**
+       * 改变items，然后重新渲染
+       * 
+       */
       changeData() {
         let {
           current
@@ -293,6 +281,13 @@
       },
 
 
+      /**
+       * 绑定事件
+       * 
+       * @param {any} dom 
+       * @param {any} type 
+       * @param {any} cb 
+       */
       bindEvent(dom, type, cb) {
         if (dom.attachEvent) {
           dom.addtachEvent(`on${type}`, cb);

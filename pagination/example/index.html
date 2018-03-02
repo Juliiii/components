@@ -12,7 +12,7 @@
   <div id="app1"></div>
   <script src="../index.js"></script>
   <script>
-    let a = new Pagination(document.getElementById('app'));
+    let a = new Pagination(document.getElementById('app'), {current: 4});
     a.on('onPageChange', (current) => {
       console.log(current);
     });
