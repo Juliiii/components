@@ -8,10 +8,10 @@
 + 只希望我能尽量写，orz
 
 ### 目前完成
-+ progress-indicator
-类似阮一峰老师的《ECMAScript 6 入门》的那个网站的顶部的进度条
++ **progress-indicator**<br/>
+简介：类似阮一峰老师的《ECMAScript 6 入门》的那个网站的顶部的进度条<br/>
 在线预览: [传送门](https://juliiii.github.io/progress-indicator/example/index.html)
 
-+ baidu-search
-百度搜索框
++ **baidu-search**<br/>
+简介：百度搜索框<br/>
 在线预览: [传送门](https://juliiii.github.io/baidu-search/index.html)
