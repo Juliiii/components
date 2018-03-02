@@ -333,19 +333,6 @@
     listeners.add(type, cb);
   }
 
-
-  /**
-   * 
-   * 传入新的配置，更新整个组件
-   * 
-   * @param {any} option 配置
-   */  
-  Pagination.prototype.updateByOption = function(option) {
-    _.clean
-  }
-
   window.Pagination = Pagination;
-
-
 
 })(window);
