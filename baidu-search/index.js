@@ -1,7 +1,17 @@
 (function(window) {
-  function searchComponent() {
+
+  let instance = null;
+
+  function _searchComponent() {
     this.init();
     this.bindListener();
+  }
+
+  function searchComponent() {
+    if (!instance) {
+      instance = new _searchComponent();
+    }
+    return instance;
   }
 
   function bindListener(dom = document, event, cb) {
@@ -15,7 +25,7 @@
   }
 
 
-  searchComponent.prototype.init = function() {
+  _searchComponent.prototype.init = function() {
     this.input = document.getElementById('search_input');
     this.button = document.getElementById('search_button');
     this.list = document.getElementById('list');
@@ -23,7 +33,7 @@
     this.timeId = null;
   }
 
-  searchComponent.prototype.bindListener = function() {
+  _searchComponent.prototype.bindListener = function() {
     bindListener(this.input, 'input',  (e) => {
       if (this.timeId) {
         clearTimeout(this.timeId);
@@ -52,11 +62,11 @@
     });
   }
 
-  searchComponent.prototype.search = function() {
+  _searchComponent.prototype.search = function() {
     window.open(`http://www.baidu.com/s?wd=${this.input.value}`);
   }
 
-  searchComponent.prototype.changeList = function(list) {
+  _searchComponent.prototype.changeList = function(list) {
     const length = list.length;
     let i;
     for (i = 0; i < length; i++) {
@@ -70,7 +80,7 @@
     }
   }
 
-  searchComponent.prototype.clearList = function() {
+  _searchComponent.prototype.clearList = function() {
     for (let i = 0; i < this.listChild.length; i++) {
       this.listChild[i].innerText = '';
     }

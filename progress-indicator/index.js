@@ -44,24 +44,25 @@
     },
     // 初始化函数
     init(option) {
-      _.$option = utils.extend(_.$option, option);
-      _.create(arguments);
+      this.$option = utils.extend(this.$option, option);
+      this.create(arguments);
+      this.onScroll = this.onScroll.bind(this);
       if (document.addEventListener) {
-        document.addEventListener('scroll', _.onScroll);
+        document.addEventListener('scroll', this.onScroll);
       } else {
-        document.attachEvent('onscroll', _.onScroll);
+        document.attachEvent('onscroll', this.onScroll);
       }
     },
     // 创建dom
     create() {
-      _.$el = document.createElement('div');
-      _.$el.style.height = '5px';
-      _.$el.style.width = '0px';
-      _.$el.style.position = 'fixed';
-      _.$el.style.top = '0';
-      _.$el.style.left = '0';
-      _.$el.style.backgroundColor = _.$option.color;
-      document.body.appendChild(_.$el);
+      this.$el = document.createElement('div');
+      this.$el.style.height = '5px';
+      this.$el.style.width = '0px';
+      this.$el.style.position = 'fixed';
+      this.$el.style.top = '0';
+      this.$el.style.left = '0';
+      this.$el.style.backgroundColor = this.$option.color;
+      document.body.appendChild(this.$el);
     },
     // 页面滚动的回调函数
     onScroll() {
@@ -69,7 +70,7 @@
       let curPos = metrics.scrollHeight <= metrics.scrollTop + metrics.clientHeight
         ? metrics.clientWidth 
         : Math.floor(metrics.clientWidth * (metrics.scrollTop / (metrics.scrollHeight - metrics.clientHeight)));
-      _.$el.style.width = curPos + 'px';
+      this.$el.style.width = curPos + 'px';
 
       setTimeout(() => {
         if (metrics.scrollHeight <= metrics.scrollTop + metrics.clientHeight) {
