@@ -1,0 +1,21 @@
+html,
+body,
+.content {
+  height: 100%;
+  width: 100%;
+}
+
+
+.content {
+  position: relative;
+  background-color: antiquewhite;
+}
+
+.square {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100px;
+  width: 100px;
+  background-color: blue;
+}
