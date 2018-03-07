@@ -323,6 +323,23 @@
         } else {
           dom[`on${type}`] = cb;
         }
+      },
+      mixin(a, b) {
+        const obj = {};
+
+        for (var key in a) {
+          if (a.hasOwnProperty(key)) {
+            obj[key] = a[key];
+          }
+        }
+
+        for (var key in b) {
+          if (b.hasOwnProperty(key)) {
+            obj[key] = b[key];
+          }
+        }
+
+        return obj;
       }
     }
 
@@ -340,8 +357,7 @@
       pageSizeOptions: [10, 20, 30, 40]    
     }
 
-
-      _.init(el, {...defaultOption, ...option});
+      _.init(el, _.mixin(defaultOption, option));
     }
 
   /**
