@@ -140,6 +140,11 @@
             }
             this.items.reverse();
           }
+        } else {
+          this.items = [];
+          for (let i = 1; i <= this.length; i++) {
+            this.items.push(i);
+          }
         }
       },
 

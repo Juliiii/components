@@ -13,7 +13,7 @@
   <div id="app1"></div>
   <script src="../index.js"></script>
   <script>
-    let a = new Pagination(document.getElementById('app'), {current: 4});
+    let a = new Pagination(document.getElementById('app'), {total: 90});
     a.on('onPageChange', (current) => {
       console.log(current);
     });
